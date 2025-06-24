@@ -7,13 +7,13 @@ class Person:
         Person.people[name] = self
 
 
-def create_person_list(people_data: list[dict]) -> list[Person]:
+def create_person_list(people: list[dict]) -> list[Person]:
     Person.people.clear()
 
-    for data in people_data:
+    for data in people:
         Person(data["name"], data["age"])
 
-    for data in people_data:
+    for data in people:
         person = Person.people[data["name"]]
 
         if data.get("wife"):
@@ -21,4 +21,4 @@ def create_person_list(people_data: list[dict]) -> list[Person]:
         if data.get("husband"):
             person.husband = Person.people[data["husband"]]
 
-    return [Person.people[data["name"]] for data in people_data]
+    return [Person.people[data["name"]] for data in people]
